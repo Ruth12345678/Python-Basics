@@ -1,40 +1,31 @@
-import string
+# Read text from a file, and count the occurence of words in that text
+# Example:
+# count_words("The cake is done. It is a big cake!") 
+# --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
+
+def read_file_content(filename):
+    # [assignment] Add your code here 
+    read_file = open(filename,"r")
+    details = str(read_file.read())
+    print(details)
+    return details
+    # print(details)
+    # read_file.close()
 
 
-class Student:
-    # [assignment] Skeleton class. Add your code here
-    def __init__(self,name,age,tracks,score):
-        self.name = name
-        self.age = int(age)
-        self.tracks = tracks
-        self.score = float(score)
-        pass
-
-    def change_name(self,new_n):
-        self.name = new_n
-        print("Your new name is "+self.name)
-
-    def change_age(self,new_a):
-        self.age = int(new_a)
-        return self.age
-
-    def add_track(self,new_t):
-        tracks = self.tracks.append(new_t)
-        pass
-
-    def get_score(self):
-        print(self.score)
+def count_words():
+    text = read_file_content("story.txt")
+    # [assignment] Add your code here
+    file_dic = dict()
+    new_l = text.split()
+    for w in new_l:
+        if w in file_dic:
+            file_dic[w] += 1
+        else:
+            file_dic[w] = 1
     
+    return file_dic
+    # return {"as": 10, "would": 20}
 
 
-Bob = Student("Bob",26,["FE","BE","PE","SE"],20.90)
-
-# Expected methods
-Bob.change_name("Peter")
-Bob.change_age(34)
-Bob.add_track("UI/UX")
-print(Bob.tracks)
-Bob.get_score()
-print(Bob.age)
-print(Bob.name)
-print (Bob.name +" is "+str(Bob.age)+" years  old. He has "+str(Bob.tracks)+" as tracks and his score is "+str(Bob.score))
+print(count_words())
